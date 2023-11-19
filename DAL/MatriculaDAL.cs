@@ -109,5 +109,26 @@ namespace DAL
             }
         }
 
+        public bool EditarMatricula(Matricula matricula)
+        {
+            using (SqlConnection con = new SqlConnection(_connectionString))
+            {
+                con.Open();
+                using (SqlCommand cmd = new SqlCommand("UPDATE Matricula SET Fecha = @Fecha, Carrera = @Carrera, AnioMatricula = @AnioMatricula, SegmentoAcademico = @SegmentoAcademico, AlumnoId = @AlumnoId WHERE MatriculaId = @MatriculaId", con))
+                {
+                    cmd.Parameters.AddWithValue("@Codigo", matricula.Codigo);
+                    cmd.Parameters.AddWithValue("@Fecha", matricula.Fecha);
+                    cmd.Parameters.AddWithValue("@Carrera", matricula.Carrera);
+                    cmd.Parameters.AddWithValue("@AnioMatricula", matricula.AnioMatricula);
+                    cmd.Parameters.AddWithValue("@SegmentoAcademico", matricula.SegmentoAcademico);
+                    cmd.Parameters.AddWithValue("@AlumnoId", matricula.AlumnoId);
+                    cmd.Parameters.AddWithValue("@MatriculaId", matricula.MatriculaId);
+
+                    int rows = cmd.ExecuteNonQuery();
+                    return rows > 0;
+                }
+            }
+        }
+
     }
 }

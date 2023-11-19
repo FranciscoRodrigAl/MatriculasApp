@@ -54,7 +54,6 @@
       <DependentUpon>ModelMatricula.tt</DependentUpon>
     </Compile>
     <Compile Include="AlumnoDAL.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="Matricula.cs">
       <DependentUpon>ModelMatricula.tt</DependentUpon>
     </Compile>
