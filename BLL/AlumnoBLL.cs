@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace BLL
 {
 
-    internal class AlumnoBLL
+    public class AlumnoBLL
     {
         private AlumnoDAL alumnoDAL;
 

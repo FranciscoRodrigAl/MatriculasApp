@@ -26,7 +26,7 @@ namespace BLL
             try
             {
                 //Validación de existencia de matricula
-                Matricula matriculaExiste = (Matricula)ListarMatriculas().Where(m => m.AlumnoId == nuevaMatricula.AlumnoId && m.AnioMatricula == nuevaMatricula.AnioMatricula);
+                Matricula matriculaExiste = (Matricula)ListarMatriculas().Where(m => m.AlumnoId == nuevaMatricula.AlumnoId && m.AnioMatricula == nuevaMatricula.AnioMatricula).FirstOrDefault();
                 if (matriculaExiste != null)
                 {
                     throw new Exception("El alumno ya posee una matrícula en el mismo año");
@@ -57,11 +57,24 @@ namespace BLL
             
         }
 
+        public List<Matricula> BuscarMatriculaDeAlumno(int alumnoId)
+        {
+            try
+            {
+                return matriculaDAL.ObtenerMatriculaPorAlumnoId(alumnoId);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Error al buscar matriculas con id " + alumnoId.ToString() + " Error: " + e.Message);
+            }
+
+        }
+
         public bool EditarMatricula(Matricula matriculaEditada)
         {
             try
             {
-                Matricula matriculaExiste = (Matricula)ListarMatriculas().Where(m => m.MatriculaId == matriculaEditada.MatriculaId);
+                Matricula matriculaExiste = (Matricula)ListarMatriculas().Where(m => m.MatriculaId == matriculaEditada.MatriculaId).FirstOrDefault();
                 if (matriculaExiste == null)
                 {
                     throw new Exception("La matricula a editar no fue encontrada");

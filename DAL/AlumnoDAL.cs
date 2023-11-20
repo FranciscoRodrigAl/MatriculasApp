@@ -10,7 +10,7 @@ namespace DAL
 {
     public class AlumnoDAL
     {
-        private string _connectionString = "data source=MELISSAMF\\SQLEXPRESS;initial catalog=MatriculaApp;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
+        private string _connectionString = "data source=DESKTOP-CHERF4D\\SQLEXPRESS;initial catalog=MatriculaApp;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
 
         public bool GuardarAlumno(Alumno alumno)
         {
